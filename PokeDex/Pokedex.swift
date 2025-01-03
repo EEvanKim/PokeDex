@@ -10,7 +10,7 @@ struct FetchDataPokemons{
     var kanto: Kanto = Kanto()
     
     mutating func getData() async{
-        let URLString = "https://newsapi.org/v2/everything?domains=wsj.com&language=en&apiKey=948d8f533bf6439d94f891fae25ccf45"
+        let URLString = "https://pokeapi.co/api/v2/pokemon/?limit=151&apiKey=948d8f533bf6439d94f891fae25ccf45"
         
         guard let url = URL(string: URLString) else {return}
         guard let (data, _) = try? await URLSession.shared.data(from: url) else {return}
@@ -32,16 +32,32 @@ struct Pokemon: Codable{
 extension Pokemon: Identifiable{
     var id: String{name ?? ""}
 }
+
+
+
+
+
+
 struct FetchSpriteokemons{
-    var response: Response = Response()
+    var sprite: getSprite = getSprite()
     
     mutating func getData() async{
-        let URLString = "https://newsapi.org/v2/everything?domains=wsj.com&language=en&apiKey=948d8f533bf6439d94f891fae25ccf45"
+        guard let pokemon = Pokemon().url else {return}
+        
+        let URLString = "\(pokemon)&apiKey=948d8f533bf6439d94f891fae25ccf45"
         
         guard let url = URL(string: URLString) else {return}
         guard let (data, _) = try? await URLSession.shared.data(from: url) else {return}
         
-        guard let r = try? JSONDecoder().decode(Response.self, from: data) else {return}
-        response = r
+        guard let s = try? JSONDecoder().decode(getSprite.self, from: data) else {return}
+        sprite = s
     }
+}
+
+struct getSprite: Codable{
+    var sprites: [Sprite] = []
+}
+
+struct Sprite: Codable{
+    var front_default: String?
 }
