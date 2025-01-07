@@ -38,7 +38,7 @@ extension Pokemon: Identifiable{
 
 
 
-struct FetchSpriteokemons{
+struct FetchSpritePokemons{
     var sprite: getSprite = getSprite()
     
     mutating func getData() async{
