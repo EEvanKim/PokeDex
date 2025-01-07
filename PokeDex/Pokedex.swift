@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 struct FetchDataPokemons{
     var kanto: Kanto = Kanto()
     
@@ -39,12 +40,12 @@ extension Pokemon: Identifiable{
 
 
 struct FetchSpritePokemons{
+    @Binding var pokeURL: String
     var sprite: getSprite = getSprite()
     
     mutating func getData() async{
-        guard let pokemon = Pokemon().url else {return}
         
-        let URLString = "\(pokemon)&apiKey=948d8f533bf6439d94f891fae25ccf45"
+        let URLString = "\(pokeURL)&apiKey=948d8f533bf6439d94f891fae25ccf45"
         
         guard let url = URL(string: URLString) else {return}
         guard let (data, _) = try? await URLSession.shared.data(from: url) else {return}
@@ -60,4 +61,20 @@ struct getSprite: Codable{
 
 struct Sprite: Codable{
     var front_default: String?
+}
+
+struct FetchSpriteokemons{
+    var sprite: getSprite = getSprite()
+    
+    mutating func getData() async{
+        guard let pokemon = Pokemon().url else {return}
+        
+        let URLString = "\(pokemon)&apiKey=948d8f533bf6439d94f891fae25ccf45"
+        
+        guard let url = URL(string: URLString) else {return}
+        guard let (data, _) = try? await URLSession.shared.data(from: url) else {return}
+        
+        guard let s = try? JSONDecoder().decode(getSprite.self, from: data) else {return}
+        sprite = s
+    }
 }
