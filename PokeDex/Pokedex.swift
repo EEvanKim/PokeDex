@@ -11,7 +11,7 @@ struct FetchDataPokemons{
     var kanto: Kanto = Kanto()
     
     mutating func getData() async{
-        let URLString = "https://pokeapi.co/api/v2/pokemon/?limit=151&apiKey=948d8f533bf6439d94f891fae25ccf45"
+        let URLString = "https://pokeapi.co/api/v2/pokemon/?limit=151"
         
         guard let url = URL(string: URLString) else {return}
         guard let (data, _) = try? await URLSession.shared.data(from: url) else {return}
