@@ -17,6 +17,6 @@ struct Constants {
 
 extension Color{
     static let backgroundRed = Color("Background")
-    static let borderGrey = Color("Border")
+    static let borderGrey = Color("Borderer")
     static let whiteFont = Color("Font")
 }

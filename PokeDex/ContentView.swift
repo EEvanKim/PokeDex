@@ -12,11 +12,9 @@ struct ContentView: View {
     @State private var pokeSprites: [String: String] = [:]
     var body: some View {
         NavigationView {
-            
             ZStack {
                 Rectangle()
                     .foregroundColor(Color.backgroundRed)
-    //                .border(Color.borderGrey, width: 20)
                     .edgesIgnoringSafeArea(.all)
                 ScrollView {
                     ForEach(fetchPokemon.kanto.results) { poke in
@@ -45,6 +43,9 @@ struct ContentView: View {
                                     ProgressView()
                                         .frame(height: 200)
                                 }
+                                Text(poke.name)
+                                    .font(Constants.pixelBoldFont)
+                                    .foregroundColor(Color.black)
                             } label: {
                                 Text(poke.name)
                                     .font(Constants.pixelBoldFont)
