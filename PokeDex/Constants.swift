@@ -10,13 +10,13 @@ import SwiftUI
 
 
 struct Constants {
-    static let buttonFont: Font = Font(UIFont(name: "Helvetica-Neue", size: 24) ?? UIFont.systemFont(ofSize: 24))
-    static let textFont: Font = Font(UIFont(name: "Helvetica-Neue", size: 16) ?? UIFont.systemFont(ofSize: 16))
+    static let pixelBoldFont: Font = Font(UIFont(name: "Silkscreen-Bold", size: 24) ?? UIFont.systemFont(ofSize: 24))
+    static let pixelFont: Font = Font(UIFont(name: "Silkscreen-Regular", size: 16) ?? UIFont.systemFont(ofSize: 16))
     
 }
 
 extension Color{
-    static let backgroundBlue = Color("Background")
-    static let borderBlue = Color("Border")
-    static let greenFont = Color("Font")
+    static let backgroundRed = Color("Background")
+    static let borderGrey = Color("Border")
+    static let whiteFont = Color("Font")
 }

@@ -13,6 +13,8 @@
 		72DDEE3D2D120CDC00858B4A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DDEE3C2D120CDC00858B4A /* ContentView.swift */; };
 		72DDEE3F2D120CDE00858B4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72DDEE3E2D120CDE00858B4A /* Assets.xcassets */; };
 		72DDEE422D120CDE00858B4A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72DDEE412D120CDE00858B4A /* Preview Assets.xcassets */; };
+		76FEE5E42D2729A400D50F5B /* Silkscreen-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76FEE5E22D2729A300D50F5B /* Silkscreen-Bold.ttf */; };
+		76FEE5E52D2729A400D50F5B /* Silkscreen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76FEE5E32D2729A300D50F5B /* Silkscreen-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,9 @@
 		72DDEE3C2D120CDC00858B4A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		72DDEE3E2D120CDE00858B4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72DDEE412D120CDE00858B4A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		76FEE5E22D2729A300D50F5B /* Silkscreen-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Silkscreen-Bold.ttf"; sourceTree = "<group>"; };
+		76FEE5E32D2729A300D50F5B /* Silkscreen-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Silkscreen-Regular.ttf"; sourceTree = "<group>"; };
+		76FEE5E62D2DADCD00D50F5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +60,7 @@
 		72DDEE392D120CDC00858B4A /* PokeDex */ = {
 			isa = PBXGroup;
 			children = (
+				76FEE5E62D2DADCD00D50F5B /* Info.plist */,
 				7264CF532D2726270013BD32 /* Constants.swift */,
 				7264CF512D27261B0013BD32 /* Pokedex.swift */,
 				72DDEE3A2D120CDC00858B4A /* PokeDexApp.swift */,
@@ -68,6 +74,8 @@
 		72DDEE402D120CDE00858B4A /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				76FEE5E22D2729A300D50F5B /* Silkscreen-Bold.ttf */,
+				76FEE5E32D2729A300D50F5B /* Silkscreen-Regular.ttf */,
 				72DDEE412D120CDE00858B4A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -131,7 +139,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76FEE5E52D2729A400D50F5B /* Silkscreen-Regular.ttf in Resources */,
 				72DDEE422D120CDE00858B4A /* Preview Assets.xcassets in Resources */,
+				76FEE5E42D2729A400D50F5B /* Silkscreen-Bold.ttf in Resources */,
 				72DDEE3F2D120CDE00858B4A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,6 +292,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PokeDex/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PokeDex/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -310,6 +321,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PokeDex/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PokeDex/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
