@@ -63,6 +63,18 @@ struct FetchDataPokemons: Codable{
         guard let spriteData = try? JSONDecoder().decode(PokemonDetail.self, from: data) else { return nil }
         return spriteData.id
     }
+    
+    mutating func getTypes(pokeURL: String) async -> [PokeTypes]? {
+        guard !pokeURL.isEmpty else { return nil }
+        
+        let URLString = pokeURL
+        
+        guard let url = URL(string: URLString) else { return nil }
+        guard let (data, _) = try? await URLSession.shared.data(from: url) else { return nil }
+        
+        guard let typeData = try? JSONDecoder().decode(PokemonDetail.self, from: data) else { return nil }
+        return typeData.types
+    }
 }
 
 struct Kanto: Codable {
@@ -80,10 +92,21 @@ struct Pokemon: Codable, Identifiable {
 struct PokemonDetail: Codable {
     var sprites: Sprite
     var id: Int
+    var types: [PokeTypes]
 }
 
 struct Sprite: Codable {
     var front_default: String?
+}
+
+struct PokeTypes: Codable, Identifiable{
+    var slot: Int
+    var type: TypeDetail
+    var id: Int {slot}
+}
+
+struct TypeDetail: Codable{
+    var name: String
 }
 
 struct SpeciesDetail: Codable {

@@ -11,6 +11,7 @@ struct ContentView: View {
     @State private var fetchPokemon = FetchDataPokemons()
     @State private var pokeSprites: [String: String] = [:]
     @State private var pokedex: [String: String] = [:]
+    @State private var types: [String: [PokeTypes]] = [:]
     @State var url2: String
     @State var pokedexEntry: String
     var body: some View {
@@ -59,6 +60,13 @@ struct ContentView: View {
                                 Text("--------------------")
                                     .padding()
                                     .font(Constants.pixelBoldFont)
+                                HStack{
+                                    ForEach(types[poke.name] ?? []) { type in
+                                        Text(type.type.name)
+                                            .font(Constants.pixelBoldFont)
+                                            .foregroundColor(Color.black)
+                                    }.padding()
+                                }
                                 Text(pokedex[poke.name] ?? pokedexEntry)
                                     .font(Constants.pixelBoldFont)
                                     .foregroundColor(Color.black)
@@ -86,12 +94,16 @@ struct ContentView: View {
                             Text("--------------------")
                                 .padding()
                                 .font(Constants.pixelBoldFont)
-                            
                         }
                         .task {
+                            let type = await fetchPokemon.getTypes(pokeURL: poke.url)
+                                types[poke.name] = type
+                            
+     
                             if let spriteURL = await fetchPokemon.getSpriteData(pokeURL: poke.url) {
                                 pokeSprites[poke.name] = spriteURL
                             }
+                            
                             let pokeid = await fetchPokemon.getPokeDetails(detailsURL: poke.url)
                                 if let pokeid = pokeid {
                                     let speciesURL = "https://pokeapi.co/api/v2/pokemon-species/\(pokeid)/"

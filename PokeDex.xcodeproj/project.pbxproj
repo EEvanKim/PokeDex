@@ -62,8 +62,8 @@
 			children = (
 				76FEE5E62D2DADCD00D50F5B /* Info.plist */,
 				7264CF532D2726270013BD32 /* Constants.swift */,
-				7264CF512D27261B0013BD32 /* Pokedex.swift */,
 				72DDEE3A2D120CDC00858B4A /* PokeDexApp.swift */,
+				7264CF512D27261B0013BD32 /* Pokedex.swift */,
 				72DDEE3C2D120CDC00858B4A /* ContentView.swift */,
 				72DDEE3E2D120CDE00858B4A /* Assets.xcassets */,
 				72DDEE402D120CDE00858B4A /* Preview Content */,
