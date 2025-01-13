@@ -17,21 +17,15 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Rectangle()
-                    .foregroundColor(Color.backgroundRed)
-                    .edgesIgnoringSafeArea(.all)
                 ScrollView {
                     Text("--------------------")
-                        .padding()
+                        .padding(.bottom)
                         .font(Constants.pixelBoldFont)
-                    Image(systemName: "globe")
-                        .imageScale(.large)
-                        .foregroundStyle(.tint)
                     Text("! POKEDEX !")
                         .font(Constants.pixelBoldFont)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(Color.black)
                     Text("--------------------")
-                        .padding()
+                        .padding(.top)
                         .font(Constants.pixelBoldFont)
                     ForEach(fetchPokemon.kanto.results) { poke in
                         VStack {
@@ -40,23 +34,23 @@ struct ContentView: View {
                                     .font(Constants.pixelBoldFont)
                                     .foregroundColor(Color.black)
                                 AsyncImage(url: URL(string: spriteURL)) { phase in
-                                        switch phase {
-                                        case .empty:
-                                            ProgressView()
-                                        case .success(let image):
-                                            image
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                        case .failure:
-                                            Image(systemName: "questionmark")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                        }
+                                    switch phase {
+                                    case .empty:
+                                        ProgressView()
+                                    case .success(let image):
+                                        image
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                    case .failure:
+                                        Image(systemName: "questionmark")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
                                     }
-                                } else {
-                                    ProgressView()
-                                        .frame(height: 200)
                                 }
+                            } else {
+                                ProgressView()
+                                    .frame(height: 200)
+                            }
                                 Text("--------------------")
                                     .padding()
                                     .font(Constants.pixelBoldFont)
@@ -97,32 +91,38 @@ struct ContentView: View {
                         }
                         .task {
                             let type = await fetchPokemon.getTypes(pokeURL: poke.url)
-                                types[poke.name] = type
+                            types[poke.name] = type
                             
-     
+                            
                             if let spriteURL = await fetchPokemon.getSpriteData(pokeURL: poke.url) {
                                 pokeSprites[poke.name] = spriteURL
                             }
                             
                             let pokeid = await fetchPokemon.getPokeDetails(detailsURL: poke.url)
-                                if let pokeid = pokeid {
-                                    let speciesURL = "https://pokeapi.co/api/v2/pokemon-species/\(pokeid)/"
-                                    if let pokedexEntry = await fetchPokemon.getPokedexEntry(speciesURL: speciesURL) {
-                                        pokedex[poke.name] = pokedexEntry
-                                    } else {
-                                        pokedex[poke.name] = "No Pokédex entry available."
-                                    }
+                            if let pokeid = pokeid {
+                                let speciesURL = "https://pokeapi.co/api/v2/pokemon-species/\(pokeid)/"
+                                if let pokedexEntry = await fetchPokemon.getPokedexEntry(speciesURL: speciesURL) {
+                                    pokedex[poke.name] = pokedexEntry
+                                } else {
+                                    pokedex[poke.name] = "No Pokédex entry available."
                                 }
+                            }
                         }
                     }
                 }
                 .task {
                     await fetchPokemon.getData()
-            }
+                }
+                Rectangle()
+                    .foregroundColor(.clear)
+                    .border(Color.backgroundRed, width: 30)
+                    .edgesIgnoringSafeArea(.all)
             }
         }
     }
+
 }
+
 
 
 #Preview {
